@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6538221f-464c-41a7-9b2f-93223b0149be" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Range_1/Range_1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+    <list default="true" id="6538221f-464c-41a7-9b2f-93223b0149be" name="Changes" comment="Add Range project (part 1)">
+      <change afterPath="$PROJECT_DIR$/Range/src/ru/academits/ivanova/range/Range.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Range/src/ru/academits/ivanova/range_main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Range_1/Range_1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Range/Range.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Range_1/src/ru/academits/ivanova/range/Range.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Range_1/src/ru/academits/ivanova/range_main/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Range_1/ru/academits/ivanova/range/Range.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Range_1/ru/academits/ivanova/range/Range.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,6 +18,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SET_USER_NAME_GLOBALLY" value="false" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -25,6 +32,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "jdk.selected.JAVA_MODULE": "11",
     "last_opened_file_path": "C:/NewOopCourse"
   }
@@ -36,13 +44,30 @@
       <recent name="C:\NewOopCourse\Range_light\src\ru\academits\ivanova\range" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\NewOopCourse\Range_2\src\ru.academits.ivanova" />
       <recent name="C:\NewOopCourse\.idea" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ru.academits.ivanova.ivanova.range" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.academits.ivanova.range_main.Main" />
+      <module name="Range_2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.academits.ivanova.range_main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.academits.ivanova.range_main.Main" />
-      <module name="Range_1" />
+      <module name="Range" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ru.academits.ivanova.range_main.*" />
@@ -56,6 +81,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -68,6 +94,14 @@
       <option name="presentableId" value="Default" />
       <updated>1689606886513</updated>
     </task>
+    <task id="LOCAL-00001" summary="Add Range project (part 1)">
+      <created>1689610147640</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1689610147640</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -80,5 +114,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add Range project (part 1)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Range project (part 1)" />
   </component>
 </project>
