@@ -17,30 +17,16 @@ public class Main {
         System.out.printf("Длина заданного диапазона = %.2f%n", range.getLength());
         System.out.printf("Принадлежит ли новому диапазону число? - %b%n", range.isInside(number));
 
-        Range range1 = new Range(2, 5);
-        Range range2 = new Range(-7, 3);
-        Range range3 = range1.getIntersectionInterval(range2);
-        Range[] consolidationRanges = range1.getConsolidationInterval(range2);
-        Range[] differenceRanges = range1.getDifferenceInterval(range2);
+        Range range1 = new Range(-7, 5);
+        Range range2 = new Range(0, 5);
 
-        if (range3 == null) {
-            System.out.println("Пересечения интервалов нет");
-        } else {
-            System.out.printf("Диапазон пересечения = {%.1f; %.1f}%n", range3.getFrom(), range3.getTo());
-        }
+        System.out.print("Диапазон пересечения: ");
+        range1.printRange(range1.getIntersection(range2));
 
-        if (consolidationRanges.length == 1) {
-            System.out.printf("Диапазон объединения = {%.1f; %.1f}%n", consolidationRanges[0].getFrom(), consolidationRanges[0].getTo());
-        } else {
-            System.out.printf("Диапазоны объединения = {%.1f; %.1f} и {%.1f; %.1f}%n", consolidationRanges[0].getFrom(), consolidationRanges[0].getTo(), consolidationRanges[1].getFrom(), consolidationRanges[1].getTo());
-        }
+        System.out.print("Диапазоны объединения: ");
+        range1.printRangesArray(range1.getAggregate(range2));
 
-        if (differenceRanges.length == 0) {
-            System.out.println("Диапазона разности нет");
-        } else if (differenceRanges.length == 1) {
-            System.out.printf("Диапазон разности = {%.1f; %.1f}%n", differenceRanges[0].getFrom(), differenceRanges[0].getTo());
-        } else {
-            System.out.printf("Диапазоны разности = {%.1f; %.1f} и {%.1f; %.1f}%n", differenceRanges[0].getFrom(), differenceRanges[0].getTo(), differenceRanges[1].getFrom(), differenceRanges[1].getTo());
-        }
+        System.out.print("Диапазоны разности: ");
+        range1.printRangesArray(range1.getDifference(range2));
     }
 }

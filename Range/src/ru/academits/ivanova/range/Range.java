@@ -33,75 +33,77 @@ public class Range {
         return (number >= from) && (number <= to);
     }
 
-    /*
-     Метод получения интервала-пересечения двух интервалов.
-   */
-    public Range getIntersectionInterval(Range range2) {
-        if ((range2.from >= to) || (from >= range2.to)) {
+    @Override
+    public String toString() {
+        return "(" + this.from + "; " + this.to + ")";
+    }
+
+    public void printRange(Range range) {
+        if (range == null) {
+            System.out.println("Пересечения интервалов нет");
+        } else {
+            System.out.println(range.toString());
+        }
+    }
+
+    public void printRangesArray(Range... ranges) {
+        String rangesArrayString = "[";
+
+        for (int i = 0; i < ranges.length; i++) {
+            if (i > 0) {
+                rangesArrayString += ", ";
+            }
+
+            rangesArrayString += ranges[i].toString();
+        }
+
+        rangesArrayString += "]";
+
+        System.out.println(rangesArrayString);
+    }
+
+    /**
+     * Метод получения интервала-пересечения двух интервалов.
+     */
+    public Range getIntersection(Range range) {
+        if ((range.from >= to) || (from >= range.to)) {
             return null;
         }
 
-        Range interval = new Range(from, to);
-
-        interval.from = Math.max(from, range2.from);
-        interval.to = Math.min(to, range2.to);
-
-        return interval;
+        return new Range(Math.max(from, range.from), Math.min(to, range.to));
     }
 
-    /*
-     Метод получения объединения двух интервалов.
-   */
-    public Range[] getConsolidationInterval(Range range2) {
-        Range interval1 = new Range(from, to);
-
-        if ((range2.from > to) || (from > range2.to)) {
-            Range interval2 = new Range(from, to);
-            interval1.from = from;
-            interval1.to = to;
-            interval2.from = range2.from;
-            interval2.to = range2.to;
-
-            return new Range[]{interval1, interval2};
+    /**
+     * Метод получения объединения двух интервалов.
+     */
+    public Range[] getAggregate(Range range) {
+        if ((range.from > to) || (from > range.to)) {
+            return new Range[]{new Range(from, to), new Range(range.from, range.to)};
         }
 
-        interval1.from = Math.min(from, range2.from);
-        interval1.to = Math.max(to, range2.to);
-
-        return new Range[]{interval1};
+        return new Range[]{new Range(Math.min(from, range.from), Math.max(to, range.to))};
     }
 
-    /*
-     Метод получения разности двух интервалов.
-   */
-    public Range[] getDifferenceInterval(Range range2) {
-        if ((range2.from >= to) || (from >= range2.to) || ((from == range2.from) && (to == range2.to))) {
-            return new Range[]{};
+    /**
+     * Метод получения несимметричной разности двух интервалов - из первого интервала вычитаем второй.
+     */
+    public Range[] getDifference(Range range) {
+        if (from < range.from) {
+            if (range.from < to) {
+                if (range.to < to) {
+                    return new Range[]{new Range(from, range.from), new Range(range.to, to)};
+                }
+
+                return new Range[]{new Range(from, range.from)};
+            }
+
+            return new Range[]{new Range(from, to), new Range(range.from, range.to)};
         }
 
-        if ((from != range2.from) && (to != range2.to)) {
-            Range interval1 = new Range(from, to);
-            Range interval2 = new Range(from, to);
-            interval1.from = Math.min(from, range2.from);
-            interval1.to = Math.max(from, range2.from);
-            interval2.from = Math.min(to, range2.to);
-            interval2.to = Math.max(to, range2.to);
-
-            return new Range[]{interval1, interval2};
+        if (range.to < to) {
+            return new Range[]{new Range(range.to, to)};
         }
 
-        Range interval1 = new Range(from, to);
-
-        if (from == range2.from) {
-            interval1.from = Math.min(to, range2.to);
-            interval1.to = Math.max(to, range2.to);
-
-            return new Range[]{interval1};
-        }
-
-        interval1.from = Math.min(from, range2.from);
-        interval1.to = Math.max(from, range2.from);
-
-        return new Range[]{interval1};
+        return new Range[]{};
     }
 }
