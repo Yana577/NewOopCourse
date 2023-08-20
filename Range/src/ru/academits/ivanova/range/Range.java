@@ -35,31 +35,7 @@ public class Range {
 
     @Override
     public String toString() {
-        return "(" + this.from + "; " + this.to + ")";
-    }
-
-    public void printRange(Range range) {
-        if (range == null) {
-            System.out.println("Пересечения интервалов нет");
-        } else {
-            System.out.println(range.toString());
-        }
-    }
-
-    public void printRangesArray(Range... ranges) {
-        String rangesArrayString = "[";
-
-        for (int i = 0; i < ranges.length; i++) {
-            if (i > 0) {
-                rangesArrayString += ", ";
-            }
-
-            rangesArrayString += ranges[i].toString();
-        }
-
-        rangesArrayString += "]";
-
-        System.out.println(rangesArrayString);
+        return "(" + from + "; " + to + ")";
     }
 
     /**
@@ -76,7 +52,7 @@ public class Range {
     /**
      * Метод получения объединения двух интервалов.
      */
-    public Range[] getAggregate(Range range) {
+    public Range[] getUnion(Range range) {
         if ((range.from > to) || (from > range.to)) {
             return new Range[]{new Range(from, to), new Range(range.from, range.to)};
         }
@@ -97,7 +73,7 @@ public class Range {
                 return new Range[]{new Range(from, range.from)};
             }
 
-            return new Range[]{new Range(from, to), new Range(range.from, range.to)};
+            return new Range[]{new Range(from, to)};
         }
 
         if (range.to < to) {

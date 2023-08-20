@@ -2,6 +2,8 @@ package ru.academits.ivanova.range_main;
 
 import ru.academits.ivanova.range.Range;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
         Range range = new Range(-9, -5);
@@ -17,16 +19,24 @@ public class Main {
         System.out.printf("Длина заданного диапазона = %.2f%n", range.getLength());
         System.out.printf("Принадлежит ли новому диапазону число? - %b%n", range.isInside(number));
 
-        Range range1 = new Range(-7, 5);
-        Range range2 = new Range(0, 5);
+        Range range1 = new Range(-7, 3);
+        Range range2 = new Range(-9, 0);
 
         System.out.print("Диапазон пересечения: ");
-        range1.printRange(range1.getIntersection(range2));
+        print(range1.getIntersection(range2));
 
         System.out.print("Диапазоны объединения: ");
-        range1.printRangesArray(range1.getAggregate(range2));
+        print(range1.getUnion(range2));
 
         System.out.print("Диапазоны разности: ");
-        range1.printRangesArray(range1.getDifference(range2));
+        print(range1.getDifference(range2));
+    }
+
+    public static void print(Range range) {
+        System.out.println(range);
+    }
+
+    public static void print(Range... ranges) {
+        System.out.println(Arrays.toString(ranges));
     }
 }
