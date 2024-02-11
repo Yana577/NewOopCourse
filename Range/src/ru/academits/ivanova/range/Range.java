@@ -64,8 +64,8 @@ public class Range {
      * Метод получения несимметричной разности двух интервалов - из первого интервала вычитаем второй.
      */
     public Range[] getDifference(Range range) {
-        if (from < range.from) {
-            if (range.from < to) {
+        if ((from < range.to) && (range.from < to)) {
+            if (from < range.from) {
                 if (range.to < to) {
                     return new Range[]{new Range(from, range.from), new Range(range.to, to)};
                 }
@@ -73,17 +73,13 @@ public class Range {
                 return new Range[]{new Range(from, range.from)};
             }
 
-            return new Range[]{new Range(from, to)};
-        }
-
-        if (range.to < to) {
-            if (range.to < from) {
-                return new Range[]{new Range(from, to)};
+            if (range.to < to) {
+                return new Range[]{new Range(range.to, to)};
             }
 
-            return new Range[]{new Range(range.to, to)};
+            return new Range[]{};
         }
 
-        return new Range[]{};
+        return new Range[]{new Range(from, to)};
     }
 }
