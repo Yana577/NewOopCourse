@@ -64,22 +64,22 @@ public class Range {
      * Метод получения несимметричной разности двух интервалов - из первого интервала вычитаем второй.
      */
     public Range[] getDifference(Range range) {
-        if ((from < range.to) && (range.from < to)) {
-            if (from < range.from) {
-                if (range.to < to) {
-                    return new Range[]{new Range(from, range.from), new Range(range.to, to)};
-                }
-
-                return new Range[]{new Range(from, range.from)};
-            }
-
-            if (range.to < to) {
-                return new Range[]{new Range(range.to, to)};
-            }
-
-            return new Range[]{};
+        if ((from > range.to) || (range.from > to)) {
+            return new Range[]{new Range(from, to)};
         }
 
-        return new Range[]{new Range(from, to)};
+        if (from < range.from) {
+            if (range.to < to) {
+                return new Range[]{new Range(from, range.from), new Range(range.to, to)};
+            }
+
+            return new Range[]{new Range(from, range.from)};
+        }
+
+        if (range.to < to) {
+            return new Range[]{new Range(range.to, to)};
+        }
+
+        return new Range[]{};
     }
 }
