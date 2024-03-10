@@ -6,51 +6,60 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(getFileLines(new File("input.txt")));
+        String fileName = "input.txt";
+
+        try (FileReader fileReader = new FileReader(fileName)) {
+            System.out.println("Все строки файла " + fileName + ":" + getFileLines(fileName));
+        } catch (FileNotFoundException e) {
+            System.out.println("Файл не найден");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(10, 10, 7, 8, 4, 5, 7, 2, 7, 3, 7, 6, 4, 3, 10));
 
-        System.out.println(deleteEvenNumbers(numbers));
-        System.out.println(deleteNumbersDuplicates(numbers));
+        System.out.println("Исходный список чисел: " + numbers);
+        deleteEvenNumbers(numbers);
+        System.out.println("Список после удаления из него всех четных чисел:  " + numbers);
+        System.out.println("Новый список чисел на основе прежнего, но без повторений: " + createNotDuplicateDigitsList(numbers));
     }
 
-    public static ArrayList<String> getFileLines(File file) {
+    public static ArrayList<String> getFileLines(String fileName) {
         ArrayList<String> lines = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
 
             while ((line = reader.readLine()) != null) {
                 lines.add(line);
             }
         } catch (IOException e) {
-            System.out.println("Файл не найден");
+            throw new RuntimeException(e);
         }
 
         return lines;
     }
 
-    public static ArrayList<Integer> deleteEvenNumbers(ArrayList<Integer> numbers) {
+    public static void deleteEvenNumbers(ArrayList<Integer> numbers) {
         for (int i = 0; i < numbers.size(); ++i) {
             if (numbers.get(i) % 2 == 0) {
                 numbers.remove(i);
                 i--;
             }
         }
-
-        return numbers;
     }
 
-    public static ArrayList<Integer> deleteNumbersDuplicates(ArrayList<Integer> numbers) {
-        ArrayList<Integer> resultNumbersList = new ArrayList<>(numbers.size());
-        resultNumbersList.add(numbers.get(0));
+    public static ArrayList<Integer> createNotDuplicateDigitsList(ArrayList<Integer> numbers) {
+        ArrayList<Integer> resultNotDuplicateDigitsList = new ArrayList<>(numbers.size());
 
-        for (int i = 1; i < numbers.size(); i++) {
-            if (!resultNumbersList.contains(numbers.get(i))) {
-                resultNumbersList.add(numbers.get(i));
+        if (numbers.size() > 0) {
+            for (Integer number : numbers) {
+                if (!resultNotDuplicateDigitsList.contains(number)) {
+                    resultNotDuplicateDigitsList.add(number);
+                }
             }
         }
 
-        return resultNumbersList;
+        return resultNotDuplicateDigitsList;
     }
 }
